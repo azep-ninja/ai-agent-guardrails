@@ -1,0 +1,44 @@
+# AI Agent Guardrails
+
+> Open-source safety patterns for AI agents that handle real money.
+
+## Core Principle
+LLMs understand language. Code enforces rules. Never confuse the two. Your LLM should figure out WHAT the user wants. Your code should decide WHETHER it's allowed and WHETHER it's safe.
+
+## Three-Layer Architecture
+Layer 1 (LLM): Intent detection, classification, context resolution.
+Layer 2 (Code): Operation completeness validation, identity verification, rate limiting, business rules.
+Layer 3 (Code): Deduplication, platform restrictions, transaction simulation.
+
+## Key Patterns
+
+### Two-Call LLM Architecture
+Call 1: Classify intent (operational/educational/conversational). Call 2: Extract structured parameters. Deterministic code validates between and after both calls.
+
+### Operation Completeness
+Define required fields per operation type in code: buy needs (amount, token_out, chain), sell needs (amount, token, chain), send needs (amount, token, recipient, chain), bridge needs (amount, token, chain, target_chain).
+
+### Identity Verification
+Check operation.user_id === authenticatedUserId in code. Never let the LLM determine the user. Pass auth from session/JWT directly to validation.
+
+### Rate Limiting
+Tiered: global (ops/minute, ops/hour), per-type (sends/hour), value-based (max USD per transaction, daily volume). All in code.
+
+### Hallucination Prevention
+Whitelist valid operation types. Validate every LLM output against the list. Remove hallucinated types. When uncertain, return LESS not MORE.
+
+### Prompt Hardening
+Security rules in LLM prompts as defense-in-depth. Anti-impersonation, anti-manipulation, safe defaults. Not sufficient alone, code validates everything.
+
+## File Structure
+- examples/templates/ — LLM prompt templates (Call 1 and Call 2)
+- examples/validation/ — Deterministic validation (completeness, hallucination checks)
+- examples/rate-limiting/ — Rate limiter implementation
+- examples/security/ — Identity verification, deduplication, prompt hardening, platform restrictions
+- examples/middleware/ — Full pipeline example showing all layers
+- docs/ — Architecture deep dive, threat model, and LLM perspective on building safely
+- src/core/types.ts — Shared type definitions
+
+## Built By
+Quick Intel and Tator team, production-tested across 60+ blockchain networks.
+Repository: https://github.com/azep-ninja/ai-agent-guardrails
