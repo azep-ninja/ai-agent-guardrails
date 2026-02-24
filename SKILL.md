@@ -1,8 +1,15 @@
-SKILL.md
+---
+name: ai-agent-guardrails
+description: Safety patterns and guardrails for AI agents that handle financial transactions. Covers prompt injection prevention, operation validation, identity verification, rate limiting, hallucination prevention, and platform-specific safety.
+version: 1.0.0
+metadata:
+  openclaw:
+    homepage: https://github.com/azep-ninja/ai-agent-guardrails
+---
 
 # AI Agent Guardrails
 
-Safety patterns for AI agents that handle financial transactions. Framework-agnostic TypeScript examples from production systems across 50+ chains.
+Safety patterns for AI agents that handle financial transactions. Framework-agnostic TypeScript examples from production systems across 24+ chains.
 
 ## Core Principle
 
