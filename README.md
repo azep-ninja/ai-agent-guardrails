@@ -36,7 +36,7 @@ An LLM can be convinced through clever prompting to skip a safety check. A hardc
 
 ### The Three-Layer Architecture
 
-Every production-safe AI agent handling money should implement three distinct layers:
+Every production safe AI agent handling money should implement three distinct layers:
 
 ```
 ┌─────────────────────────────────────────────────┐
