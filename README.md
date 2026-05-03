@@ -1,6 +1,6 @@
 # AI Agent Guardrails
 
-**Open-source safety patterns for AI agents that handle real money.**
+**Open-source safety patterns for AI agents that handle real money in crypto.**
 
 > LLMs are powerful tools, not trusted authorities. Use them for what they're good at. Build your guardrails outside of that.
 
